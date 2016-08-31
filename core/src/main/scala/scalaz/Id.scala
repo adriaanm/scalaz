@@ -13,7 +13,9 @@ trait IdInstances {
   // TODO Review!
   type Identity[+X] = Need[X]
 
-  val id: Traverse1[Id] with Each[Id] with Monad[Id] with Comonad[Id] with Distributive[Id] with Zip[Id] with Unzip[Id] with Align[Id] with Cozip[Id] =
+  import scala.annotation.unchecked.uncheckedVariance
+
+  val id: Traverse1[Id @uncheckedVariance] with Each[Id @uncheckedVariance] with Monad[Id @uncheckedVariance] with Comonad[Id @uncheckedVariance] with Distributive[Id @uncheckedVariance] with Zip[Id @uncheckedVariance] with Unzip[Id @uncheckedVariance] with Align[Id @uncheckedVariance] with Cozip[Id @uncheckedVariance] =
     new Traverse1[Id] with Each[Id] with Monad[Id] with Comonad[Id] with Distributive[Id] with Zip[Id] with Unzip[Id] with Align[Id] with Cozip[Id] {
       def point[A](a: => A): A = a
 
